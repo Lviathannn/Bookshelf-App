@@ -12,21 +12,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     const searchForm = document.getElementById('search-form');
     
-    searchForm.addEventListener('submit',(e)=>{
+    searchForm.addEventListener('keyup',(e)=>{
         e.preventDefault();
-        const searchKey = document.getElementById('search-key').value;
+        const searchKey = document.getElementById('search-key').value.toUpperCase();
+        const cards = document.getElementsByClassName('card-container');
         
-        if (searchKey != '') {
-          const filterBook = books.filter((book) => {return book.judulBuku == searchKey});
-          books = filterBook;
-          if (books.length == 0) {
-            swal("Data Gagal Dimuat!", "Tidak ada yang cocok dengan yang anda cari", "error");
-          }
-          document.dispatchEvent(new Event(RENDER_EVENT));
-        } else{
-          loadDataFromStorage()
+        for (const card of cards) {
+          card.classList.remove('hidden');
+          const textContent = card.textContent.toUpperCase();
+            if (!textContent.includes(searchKey)) {
+                card.classList.add('hidden');
+            }
         }
       });
+      
       if (isStorageExist()) {
         loadDataFromStorage();
     };
@@ -126,14 +125,14 @@ function makeBook(bookObject) {
 
     const penulis = document.createElement('p');
     penulis.classList.add('text-sm', 'text-slate-500', 'mt-1');
-    penulis.innerHTML = `Penulis : ${bookObject.penulisBuku}`
+    penulis.innerHTML = ` Penulis : ${bookObject.penulisBuku}`
 
     const tahun = document.createElement('p');
     tahun.classList.add('text-sm', 'text-slate-500', 'mt-1');
-    tahun.innerHTML = `Tahun Terbit : ${bookObject.tahunBuku}`
+    tahun.innerHTML = ` Tahun Terbit : ${bookObject.tahunBuku}`
 
     const container = document.createElement('div');
-    container.classList.add('w-full', 'sm:w-[40%]', 'md:w-1/3', 'lg:w-[30%]', 'shadow-md', 'rounded-md', 'p-5');
+    container.classList.add('w-full', 'sm:w-[40%]', 'md:w-1/3', 'lg:w-[30%]', 'shadow-md', 'rounded-md', 'p-5','card-container');
     container.append(judul,penulis,tahun,iconContainer);
     
     archiveButton.addEventListener('click', function () {
