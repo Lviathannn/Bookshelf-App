@@ -41,7 +41,7 @@
                     <button class="text-2xl text-red-500 absolute top-1 right-5" id="close-button">
                         <i class="bi bi-x-circle-fill"></i>
                     </button>
-                    <h1 class="text-2xl font-medium text-slate-700">Tambah Data</h1>
+                    <h1 class="text-2xl font-medium text-slate-700">Tambah Buku</h1>
                     <form action="" class="w-full flex flex-col gap-3" id="form-tambah">
                         <input type="text" placeholder="Judul" class="bg-slate-100 px-2 py-1 rounded-md w-full" id="judul-buku" required>
                         <input type="text" placeholder="Penulis" class="bg-slate-100 px-2 py-1 rounded-md w-full" id="penulis-buku" required>
@@ -50,7 +50,28 @@
                             <input type="checkbox" name="isCompleted" class="" id="isCompleted">
                             <label for="isCompleted" class="text-sm text-slate-500">Selesai Baca?</label>
                         </div>
-                        <button type="submit" class="py-1 bg-blue-500 text-slate-50 rounded-md mt-5">Tambah Data</button>
+                        <button type="submit" class="py-1 bg-blue-500 text-slate-50 rounded-md mt-5">Tambah Buku</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="hidden" id="edit-section">
+            <div class="bg-white/20 backdrop-blur-sm fixed bottom-0 top-0 right-0 left-0 flex justify-center items-center">
+                <div class="p-6 w-4/5 lg:w-1/2 bg-white shadow-md rounded-md flex flex-col justify-center items-center gap-3 relative">
+                    <button class="text-2xl text-red-500 absolute top-1 right-5" id="edit-close-button">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </button>
+                    <h1 class="text-2xl font-medium text-slate-700">Edit Buku</h1>
+                    <form action="" class="w-full flex flex-col gap-3" id="form-edit">
+                        <input type="text" placeholder="Judul" class="bg-slate-100 px-2 py-1 rounded-md w-full" id="edit-judul" required>
+                        <input type="text" placeholder="Penulis" class="bg-slate-100 px-2 py-1 rounded-md w-full" id="edit-penulis" required>
+                        <input type="number" placeholder="Tahun Terbit" class="bg-slate-100 px-2 py-1 rounded-md w-full" id="edit-tahun" required>
+                        <div class="flex gap-3">
+                            <input type="checkbox" name="isCompleted" class="" id="editIsCompleted">
+                            <label for="isCompleted" class="text-sm text-slate-500">Selesai Baca?</label>
+                        </div>
+                        <button type="submit" class="py-1 bg-blue-500 text-slate-50 rounded-md mt-5">Edit Buku</button>
                     </form>
                 </div>
             </div>
