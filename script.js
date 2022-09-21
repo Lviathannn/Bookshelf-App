@@ -163,8 +163,11 @@ function makeBook(bookObject) {
     });
     
     editButton.addEventListener('click',()=>{
-      const bookTarget = findBook(bookObject.id);
-      showModal(bookTarget);
+      books.map((book)=>{
+        if (book.id === bookObject.id) {
+            showModal(book);
+        }
+      });
     });
     
     
@@ -195,8 +198,7 @@ function showModal(bookTarget) {
         modal.classList.add('hidden');
       });
       
-      form.addEventListener('submit',(e)=>{
-        e.preventDefault();
+      form.addEventListener('submit',()=>{
         bookTarget.judulBuku = judul.value;
         bookTarget.penulisBuku = penulis.value;
         bookTarget.tahunBuku = tahun.value;
